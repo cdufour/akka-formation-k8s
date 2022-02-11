@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: hello-container
+            image: busybox
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from K8S cluster
+
+# équivalent Dockfile:
+#CMD ["/bin/sh", "-c", "date;echo Hello from K8S cluster"]
+

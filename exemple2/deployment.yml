@@ -1,0 +1,23 @@
+# Exemple de création d'une ressource Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-nginx
+
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 5
+
+  # template du Pod répliqué
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:1.20-alpine
+        ports:
+        - containerPort: 80

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-redis
+
+spec:
+  containers:
+  - name: redis-container
+    image: redis:5-alpine
